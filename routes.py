@@ -3,8 +3,6 @@
 
 from flask import Flask, request, redirect, session
 import logging
-import random
-import string
 import sys
 import warnings
 
@@ -12,10 +10,10 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__) 
 app.debug = True
-app.secret_key = ''.join(random.choice(string.ascii_letters) for _ in range(100))
+app.secret_key = "One does not simply walk into this session."
 
-@app.route('/') 
-def hello(): 
+@app.route('/')
+def root():
     logger.info("root")
     return '<http><body><p>Hello %s</p><p><a href="/form">Form here.</a></p></body></http>' % session.get('foo', 'World')
     
